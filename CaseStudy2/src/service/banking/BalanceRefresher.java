@@ -29,7 +29,7 @@ public class BalanceRefresher implements Runnable {
     public void run() {
         try {
             List<User> users = accountManager.getAllUsers();
-            UserFileIO.saveUsers(users);
+            UserFileIO.writerUsers(users);
             // System.out.println("Accounts saved");
         } catch (Exception e) {
             e.printStackTrace();

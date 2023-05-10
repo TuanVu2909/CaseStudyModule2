@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import model.User;
 
 public class AccountManager {
-    private Map<String, User> users;
+    private final Map<String, User> users;
 
     public AccountManager() {
+
         users = new HashMap<>();
     }
 
@@ -23,23 +22,23 @@ public class AccountManager {
     public synchronized void deposit(String phone, double amount) {
         User user = users.get(phone);
         if (user == null) {
-            throw new IllegalArgumentException("Không tìm thấy tài khoản");
+            throw new IllegalArgumentException("Account not found");
         }
         user.deposit(amount);
     }
 
-    public synchronized void withdraw(String accountNumber, double amount) {
-        User user = users.get(accountNumber);
+    public synchronized void withdraw(String phone, double amount) {
+        User user = users.get(phone);
         if (user == null) {
-            throw new IllegalArgumentException("Không tìm thấy tài khoản");
+            throw new IllegalArgumentException("Account not found");
         }
         user.withdraw(amount);
     }
 
-    public synchronized double getBalance(String accountNumber) {
-        User user = users.get(accountNumber);
+    public synchronized double getBalance(String phone){
+        User user = users.get(phone);
         if (user == null) {
-            throw new IllegalArgumentException("Không tìm thấy tài khoản");
+            throw new IllegalArgumentException("Account not found");
         }
         return user.getBalance();
     }
@@ -53,23 +52,23 @@ public class AccountManager {
         User userDest = users.get(destinationPhone);
 
         if (userDest == null) {
-            throw new IllegalArgumentException("Số tài khoản không tồn tại");
+            throw new IllegalArgumentException("Number Account does not exist");
         }
 
-        if (userFrom.getPhone() == destinationPhone) {
-            throw new IllegalArgumentException("Không chuyển được cho chính số tài khoản của mình");
+        if (userFrom.getPhone().equals(destinationPhone)) {
+            throw new IllegalArgumentException("Can't transfer to my own account number");
         }
 
         if (userFrom.getBalance() < amount) {
-            throw new IllegalArgumentException("Số dư không đủ");
+            throw new IllegalArgumentException("Insufficient balance");
         }
 
         if (destinationPhone == null) {
-            throw new IllegalArgumentException("Tài khoản đích không được để trống");
+            throw new IllegalArgumentException("The target account cannot be empty");
         }
 
         if (amount <= 0) {
-            throw new IllegalArgumentException("Số tiền không hợp lệ");
+            throw new IllegalArgumentException("Invalid amount");
         }
 
         try {

@@ -13,8 +13,8 @@ import model.User;
 
 public class UserFileIO {
 
-    public static void saveUsers(List<User> users) throws IOException {
-        File file = new File("C:\\Users\\Admin\\Desktop\\CaseStudy2abc\\CaseStudy2\\src\\data\\User.txt");
+    public static void writerUsers(List<User> users) throws IOException {
+        File file = new File("C:\\Users\\Admin\\Desktop\\CaseStudyModule2\\CaseStudy2\\src\\data\\Users.txt");
         try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
             for (User user : users) {
                 bufferedWriter.write(user.getId() + ", " + user.getFullName() +
@@ -26,8 +26,8 @@ public class UserFileIO {
         }
     }
 
-    public static List<User> loadUsers() throws IOException {
-        File file = new File("C:\\Users\\Admin\\Desktop\\CaseStudy2abc\\CaseStudy2\\src\\data\\User.txt");
+    public static List<User> readUsers() throws IOException {
+        File file = new File("C:\\Users\\Admin\\Desktop\\CaseStudyModule2\\CaseStudy2\\src\\data\\Users.txt");
         ArrayList<User> users = new ArrayList<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
             String data;

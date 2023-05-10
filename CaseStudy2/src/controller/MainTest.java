@@ -25,8 +25,7 @@ public class MainTest {
 
         balanceRefresher.start();
 
-
-        List<User> users = UserFileIO.loadUsers();
+        List<User> users = UserFileIO.readUsers();
 
         for (User user : users) {
             accountManager.createUser(user.getFullName(), user.getPhone(), user.getPassword(), user.getEmail(),
@@ -48,7 +47,7 @@ public class MainTest {
                 case 2:
                     LoginResponse response = userManage.login();
                     if (response.isLoginSuccess()) {
-                        System.out.println("Login Success!");
+
                         do {
                             System.out.println("SubMenu: ");
                             System.out.println("1.Deposit CashAmount: ");
@@ -59,43 +58,43 @@ public class MainTest {
                             choice = Integer.parseInt(scanner.nextLine());
                             switch (choice) {
                                 case 1:
-                                    double amount = 0;
-                                    System.out.println("Nhập số tiền nạp: ");
+                                    double amount ;
+                                    System.out.println("Enter Deposit: ");
                                     amount = Double.parseDouble(scanner.nextLine());
                                     try {
                                         accountManager.deposit(response.getPhone(), amount);
                                     } catch (Exception e) {
-                                        System.out.println("Lỗi: " + e.getMessage());
+                                        System.out.println("Err: " + e.getMessage());
 
                                     }
                                     double balance = accountManager.getBalance(response.getPhone());
                                     System.out.printf("Account: " + response.getPhone() + " " + "balance: " + balance + "\n");
                                     break;
                                 case 2:
-                                    double amountW = 0;
-                                    System.out.println("Nhập số tiền rút: ");
+                                    double amountW ;
+                                    System.out.println("Enter Withdraw: ");
                                     amountW = Double.parseDouble(scanner.nextLine());
                                     try {
                                         accountManager.withdraw(response.getPhone(), amountW);
                                     } catch (Exception e) {
-                                        System.out.println("Lỗi: " + e.getMessage());
+                                        System.out.println("Err: " + e.getMessage());
 
                                     }
                                     double balanceW = accountManager.getBalance(response.getPhone());
                                     System.out.printf("Account: " + response.getPhone() + " " + "balance: " + balanceW + "\n");
                                     break;
                                 case 3:
-                                    double amountTransfer = 0;
+                                    double amountTransfer;
                                     String toPhoneNumber;
-                                    System.out.println("Nhập số tài khoản chuyển: ");
+                                    System.out.println("Enter Account Transfer: ");
                                     toPhoneNumber = scanner.nextLine();
 
-                                    System.out.println("Nhập số tiền chuyển: ");
+                                    System.out.println("Enter Money Transfer: ");
                                     amountTransfer = Double.parseDouble(scanner.nextLine());
                                     try {
                                         accountManager.transfer(response.getPhone(), toPhoneNumber, amountTransfer);
                                     } catch (Exception e) {
-                                        System.out.println("Lỗi: " + e.getMessage());
+                                        System.out.println("Err: " + e.getMessage());
 
                                     }
                                     double balanceTransfer = accountManager.getBalance(response.getPhone());
@@ -119,33 +118,5 @@ public class MainTest {
             }
         } while (true);
     }
-
-    // public static void main2(String[] args) throws IOException {
-    // AccountManager accountManager = new AccountManager();
-
-    // List<User> users = UserFileIO.loadUsers();
-    // for (User user : users) {
-    // accountManager.createUser(user.getFullName(), user.getPhone(),
-    // user.getPassword(), user.getEmail(),
-    // user.getBalance());
-    // }
-    // // Start balance refresher thread
-    // BalanceRefresher balanceRefresher = new BalanceRefresher(accountManager);
-    // balanceRefresher.start();
-
-    // // Perform transactions
-    // accountManager.deposit("0329343811", 10);
-    // accountManager.deposit("0329343811", 15);
-    // // accountManager.withdraw("0909106986", 25);
-
-    // // Get account balances
-    // // double balance001 = accountManager.getBalance("0909106986");
-    // double balance002 = accountManager.getBalance("0329343811");
-
-    // // System.out.printf("Account 0909106986 balance: " +
-    // // String.valueOf(balance001));
-    // System.out.printf("Account 0329343811 balance: " +
-    // String.valueOf(balance002));
-    // }
 
 }

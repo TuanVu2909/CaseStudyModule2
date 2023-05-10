@@ -1,5 +1,0 @@
-25, tuan vu, 0909106986, Qwert123!, tuanvu@gmail.com, 2000.0
-26, tu hoang, 0329345833, Kn141112!@, kkkk@gmail.com, 1405984.0
-27, tu hoanggg, 0329345811, Kn141112!@, fkfkk@gmail.com, 3011.0
-28, tuhoanggd, 0329345822, Kn141112!@, dfkk@gmail.com, 0.0
-29, tuhoanggkkkl, 0329345844, Kn141112!@, fklfl@gmail.com, 0.0
