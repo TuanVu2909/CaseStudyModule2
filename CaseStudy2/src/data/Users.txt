@@ -1,5 +1,6 @@
-1, tuan vu, 0909100000, Qwer123!, tuanvu1@gmail.com, 33213.0
-2, Tran Ngoc Tuan Vu, 0909102345, Qwer123!, tuanvu@gmail.com, 65000.0
-3, tuan vu, 0909106986, Qwer123!, tuanvu@gmail.com, 60000.0
-4, minh thu, 0909106789, Qwer123@, minhthu@gmail.com, 5000.0
-5, Hoang thanh tu, 0329345833, Kn141112!@, kkk@gmail.com, 96232.0
+1, tuan vu, 0909100000, Qwer123!, tuanvu1@gmail.com, 58213.0
+2, Tran Ngoc Tuan Vu, 0909102345, Qwer123!, tuanvu@gmail.com, 50000.0
+3, le duc, 0909101111, Qwer123!, leduc@gmail.com, 0.0
+4, tuan vu, 0909106986, Qwer123!, tuanvu@gmail.com, 100000.0
+5, minh thu, 0909106789, Qwer123@, minhthu@gmail.com, 5000.0
+6, Hoang thanh tu, 0329345833, Kn141112!@, kkk@gmail.com, 96232.0

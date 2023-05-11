@@ -27,7 +27,7 @@ public class BalanceRefresher implements Runnable {
     }
 
     public void start() {
-        // 2 Giây chạy 1 lần, TimeUnit: Giây
+        // 2 Giây chạy ghi file 1 lần, TimeUnit: Giây
         executorService.scheduleAtFixedRate(this, 0, 2, TimeUnit.SECONDS);
     }
 
@@ -44,7 +44,7 @@ public class BalanceRefresher implements Runnable {
                 System.out.println("Ghi ra file");
             }
 
-            // Kiểm tra số dư các tài khoản có thay đổi hay không: true-có, false-không
+            // Kiểm tra số dư các tài khoản có thay đổi hay không!
             boolean isLoadNewUserList = false;
 
             // Duyệt danh sách khách hàng mới
@@ -64,10 +64,7 @@ public class BalanceRefresher implements Runnable {
                 //System.out.println("Cập nhật số dư!");
                 UserFileIO.writerUsers(users);
                 this.users = accountManager.getAllUsers();
-                isLoadNewUserList = false;
             }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }

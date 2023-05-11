@@ -82,9 +82,6 @@ public class User {
     public String toString() {
         return id + ", " + fullName + ", " + phone + ", " + password + ", " + email + ", " + balance;
     }
-    public void display(){
-
-    }
 
     public synchronized void deposit(double amount) {
         balance += amount;
@@ -92,7 +89,7 @@ public class User {
 
     public synchronized void withdraw(double amount) {
         if (balance < amount) {
-            throw new IllegalArgumentException("Insufficient balance");
+            throw new IllegalArgumentException("số dư không đủ");
         }
         balance -= amount;
     }

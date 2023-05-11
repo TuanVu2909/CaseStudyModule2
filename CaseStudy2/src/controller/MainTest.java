@@ -32,12 +32,12 @@ public class MainTest {
 
         int choice;
         do {
-            System.out.println("MENU");
-            System.out.println("1. Register ");
-            System.out.println("2. Login ");
-            System.out.println("3. Display ");
-            System.out.println("0. Exit ");
-            System.out.println("Enter Choice ");
+            System.out.println("-------------lỰA CHỌN---------------");
+            System.out.println("1. Đăng ký tài khoản ");
+            System.out.println("2. Đăng nhập ");
+            System.out.println("3. Hiển thị danh sách tài khoản ");
+            System.out.println("0. Thoát");
+            System.out.println(" Mời bạn nhập lựa chọn: ");
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -53,40 +53,40 @@ public class MainTest {
                     LoginResponse response = userManage.login(accountManager);
                     if (response.isLoginSuccess()) {
                         do {
-                            System.out.println("Lựa chọn: ");
-                            System.out.println("1. Nạp tiền: ");
-                            System.out.println("2: Rút tiền ");
-                            System.out.println("3: Chuyển tiền ");
-                            System.out.println("4: Xem số dư ");
+                            System.out.println("---lỰA CHỌN---: ");
+                            System.out.println("1: Nạp tiền  ");
+                            System.out.println("2: Rút tiền  ");
+                            System.out.println("3: Chuyển tiền  ");
+                            System.out.println("4: Xem số dư tài khoản ");
                             System.out.println("0: Đăng xuất ");
                             choice = Integer.parseInt(scanner.nextLine());
                             switch (choice) {
                                 case 1:
-                                    double amount ;
+                                    double amount;
                                     System.out.println("Nhập số tiền nạp: ");
                                     try {
                                         amount = Double.parseDouble(scanner.nextLine());
                                         accountManager.deposit(response.getPhone(), amount);
                                     } catch (Exception e) {
-                                        System.out.println("Err: " + e.getMessage());
+                                        System.out.println("lỗi: " + e.getMessage());
 
                                     }
-                                    double balance =  accountManager.getBalance(response.getPhone());
-                                    System.out.printf("Tài khoaản: " + response.getPhone() + " " + " số dư: " + balance + "\n");
+                                    double balance = accountManager.getBalance(response.getPhone());
+                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " Số dư: " + balance + "\n");
                                     break;
                                 case 2:
-                                    double amountW ;
+                                    double amountW;
                                     System.out.println("Nhập số tiền rút: ");
 
                                     try {
                                         amountW = Double.parseDouble(scanner.nextLine());
                                         accountManager.withdraw(response.getPhone(), amountW);
                                     } catch (Exception e) {
-                                        System.out.println("Err: " + e.getMessage());
+                                        System.out.println("Lỗi: " + e.getMessage());
 
                                     }
                                     double balanceW = accountManager.getBalance(response.getPhone());
-                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " số dư: " + balanceW + "\n");
+                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + "Số dư: " + balanceW + "\n");
                                     break;
                                 case 3:
                                     double amountTransfer;
@@ -98,16 +98,16 @@ public class MainTest {
                                         amountTransfer = Double.parseDouble(scanner.nextLine());
                                         accountManager.transfer(response.getPhone(), toPhoneNumber, amountTransfer);
                                     } catch (Exception e) {
-                                        System.out.println("Err: " + e.getMessage());
+                                        System.out.println("Lỗi: " + e.getMessage());
 
                                     }
                                     double balanceTransfer = accountManager.getBalance(response.getPhone());
-                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " số dư: " + balanceTransfer + "\n");
+                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " Số dư: " + balanceTransfer + "\n");
 
                                     break;
                                 case 4:
                                     double balance2 = accountManager.getBalance(response.getPhone());
-                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " số dư: " + balance2 +  "\n");
+                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " Số dư: " + balance2 + "\n");
                                     break;
                             }
                         } while (choice != 0);
