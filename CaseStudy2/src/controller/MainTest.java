@@ -12,7 +12,6 @@ import service.banking.BalanceRefresher;
 import service.implUser.UserManage;
 
 public class MainTest {
-
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         UserManage userManage = new UserManage(scanner);
@@ -53,7 +52,6 @@ public class MainTest {
                 case 2:
                     LoginResponse response = userManage.login(accountManager);
                     if (response.isLoginSuccess()) {
-
                         do {
                             System.out.println("Lựa chọn: ");
                             System.out.println("1. Nạp tiền: ");
@@ -66,21 +64,22 @@ public class MainTest {
                                 case 1:
                                     double amount ;
                                     System.out.println("Nhập số tiền nạp: ");
-                                    amount = Double.parseDouble(scanner.nextLine());
                                     try {
+                                        amount = Double.parseDouble(scanner.nextLine());
                                         accountManager.deposit(response.getPhone(), amount);
                                     } catch (Exception e) {
                                         System.out.println("Err: " + e.getMessage());
 
                                     }
-                                    double balance = accountManager.getBalance(response.getPhone());
+                                    double balance =  accountManager.getBalance(response.getPhone());
                                     System.out.printf("Tài khoaản: " + response.getPhone() + " " + " số dư: " + balance + "\n");
                                     break;
                                 case 2:
                                     double amountW ;
                                     System.out.println("Nhập số tiền rút: ");
-                                    amountW = Double.parseDouble(scanner.nextLine());
+
                                     try {
+                                        amountW = Double.parseDouble(scanner.nextLine());
                                         accountManager.withdraw(response.getPhone(), amountW);
                                     } catch (Exception e) {
                                         System.out.println("Err: " + e.getMessage());
@@ -94,10 +93,9 @@ public class MainTest {
                                     String toPhoneNumber;
                                     System.out.println("Nhập số tài khoản nhận: ");
                                     toPhoneNumber = scanner.nextLine();
-
                                     System.out.println("Nhập số tiền chuyển: ");
-                                    amountTransfer = Double.parseDouble(scanner.nextLine());
                                     try {
+                                        amountTransfer = Double.parseDouble(scanner.nextLine());
                                         accountManager.transfer(response.getPhone(), toPhoneNumber, amountTransfer);
                                     } catch (Exception e) {
                                         System.out.println("Err: " + e.getMessage());
@@ -109,7 +107,7 @@ public class MainTest {
                                     break;
                                 case 4:
                                     double balance2 = accountManager.getBalance(response.getPhone());
-                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " số dư: " + balance2 + "\n");
+                                    System.out.printf("Tài khoản: " + response.getPhone() + " " + " số dư: " + balance2 +  "\n");
                                     break;
                             }
                         } while (choice != 0);

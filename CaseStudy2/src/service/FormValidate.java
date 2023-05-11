@@ -18,26 +18,25 @@ public class FormValidate {
     public boolean validateFullName(final String fullName){
         pattern = Pattern.compile(FULLNAME_PATTERN);
         matcher = pattern.matcher(fullName);
-        //System.out.println("validateFullName: " + matcher.matches());
+        System.out.println("validateFullName: " + matcher.matches());
         return matcher.matches();
     }
     public boolean validatePassword(final String password){
         pattern = Pattern.compile(PASSWORD_PATTERN);
         matcher = pattern.matcher(password);
-       // System.out.println("validatePassword: " + matcher.matches());
+        System.out.println("validatePassword: " + matcher.matches());
         return matcher.matches();
     }
     public boolean validateEmail(final  String email){
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher =pattern.matcher(email);
-       // System.out.println("validateEmail: " + matcher.matches());
+        System.out.println("validateEmail: " + matcher.matches());
         return matcher.matches();
     }
     public boolean validatePhone(String phone){
-
         pattern = Pattern.compile(PHONE_PATTERN);
         matcher = pattern.matcher(phone);
-       // System.out.println("validatePhone: " + matcher.matches());
+        System.out.println("validatePhone: " + matcher.matches());
         return matcher.matches();
     }
 
