@@ -3,6 +3,8 @@ package model;
 public class LoginResponse {
     String phone;
 
+    boolean loginSuccess;
+
     public String getPhone() {
         return phone;
     }
@@ -18,6 +20,4 @@ public class LoginResponse {
     public void setLoginSuccess(boolean loginSuccess) {
         this.loginSuccess = loginSuccess;
     }
-
-    boolean loginSuccess;
 }

@@ -4,7 +4,7 @@ import model.LoginResponse;
 import service.banking.AccountManager;
 
 public interface Manage<E> {
-    LoginResponse login();
+    LoginResponse login(AccountManager accountManager);
     void register(AccountManager accountManager);
-    void display();
+    void display(AccountManager accountManager);
 }

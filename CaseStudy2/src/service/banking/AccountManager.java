@@ -10,6 +10,7 @@ import model.User;
 public class AccountManager {
     private final Map<String, User> users;
 
+
     public AccountManager() {
 
         users = new HashMap<>();
@@ -22,7 +23,7 @@ public class AccountManager {
     public synchronized void deposit(String phone, double amount) {
         User user = users.get(phone);
         if (user == null) {
-            throw new IllegalArgumentException("Account not found");
+            throw new IllegalArgumentException("Không tìm thấy tài khoản");
         }
         user.deposit(amount);
     }
@@ -30,7 +31,7 @@ public class AccountManager {
     public synchronized void withdraw(String phone, double amount) {
         User user = users.get(phone);
         if (user == null) {
-            throw new IllegalArgumentException("Account not found");
+            throw new IllegalArgumentException("Không tìm thấy tài khoản");
         }
         user.withdraw(amount);
     }
@@ -38,7 +39,7 @@ public class AccountManager {
     public synchronized double getBalance(String phone){
         User user = users.get(phone);
         if (user == null) {
-            throw new IllegalArgumentException("Account not found");
+            throw new IllegalArgumentException("Không tìm thấy tài khoản");
         }
         return user.getBalance();
     }
@@ -52,23 +53,23 @@ public class AccountManager {
         User userDest = users.get(destinationPhone);
 
         if (userDest == null) {
-            throw new IllegalArgumentException("Number Account does not exist");
+            throw new IllegalArgumentException("Số tài khoản nhận không tồn tại");
         }
 
         if (userFrom.getPhone().equals(destinationPhone)) {
-            throw new IllegalArgumentException("Can't transfer to my own account number");
+            throw new IllegalArgumentException("Không được chuyển đến chính tài khoản của mình");
         }
 
         if (userFrom.getBalance() < amount) {
-            throw new IllegalArgumentException("Insufficient balance");
+            throw new IllegalArgumentException("Số dư không đủ");
         }
 
         if (destinationPhone == null) {
-            throw new IllegalArgumentException("The target account cannot be empty");
+            throw new IllegalArgumentException("Tài khoản đích không được để trống");
         }
 
         if (amount <= 0) {
-            throw new IllegalArgumentException("Invalid amount");
+            throw new IllegalArgumentException("Số tiền không hợp lệ");
         }
 
         try {

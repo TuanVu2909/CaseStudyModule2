@@ -1,5 +1,8 @@
 package service;
 
+import model.User;
+import service.banking.AccountManager;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,10 +33,20 @@ public class FormValidate {
        // System.out.println("validateEmail: " + matcher.matches());
         return matcher.matches();
     }
-    public boolean validatePhone(final String phone){
+    public boolean validatePhone(String phone){
+
         pattern = Pattern.compile(PHONE_PATTERN);
         matcher = pattern.matcher(phone);
        // System.out.println("validatePhone: " + matcher.matches());
         return matcher.matches();
+    }
+
+    public boolean checkExistUser(String phone, AccountManager accountManager){
+
+        for (User user : accountManager.getAllUsers()){
+            if(user.getPhone().equals(phone)) throw new IllegalArgumentException("Tài khoản đã tồn tại!");
+        }
+
+        return true;
     }
 }
